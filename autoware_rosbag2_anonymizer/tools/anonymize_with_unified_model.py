@@ -19,8 +19,15 @@ from autoware_rosbag2_anonymizer.common import (
     get_file_paths,
 )
 
+# TODO for now no cuda because issue, need to investigate later
+import torch
+# torch.backends.cudnn.enabled = False
+
 
 def anonymize_with_unified_model(config_data, json_data, device) -> None:
+
+    print(f"is gpu available: {torch.cuda.is_available()}")
+
     # Segment-Anything-2 parameters
     SAM2_MODEL_CFG = config_data["segment_anything_2"]["model_cfg"]
     SAM_CHECKPOINT_PATH = config_data["segment_anything_2"]["checkpoint_path"]
@@ -59,6 +66,9 @@ def anonymize_with_unified_model(config_data, json_data, device) -> None:
                     image = cv_bridge.CvBridge().compressed_imgmsg_to_cv2(msg.data)
                 else:
                     image = cv_bridge.CvBridge().imgmsg_to_cv2(msg.data)
+
+                
+                print(f"Image timestamp: {msg.timestamp}")
 
                 # Find bounding boxes with Unified Model
                 detections = unified_language_model(image)

@@ -1,8 +1,8 @@
 rosbag:
-  input_bag_path: '/path/to/input_bag_file'
-  output_bag_path: '/path/to/output_bag_file'
+  input_bags_folder: '/workspace/ros2bags/nomad_bunker_office_loop_no_aug_trial_3'
+  output_bags_folder: '/workspace/anonymized_bags/nomad_bunker_office_loop_no_aug_trial_3'
   output_save_compressed_image: True
-  output_storage_id: 'mcap' # 'sqlite3' or 'mcap'
+  output_storage_id: 'sqlite3' # 'sqlite3' or 'mcap'
 grounding_dino:
   config_path: './GroundingDINO_SwinB.cfg.py'
   checkpoint_path: './groundingdino_swinb_cogcoor.pth'
@@ -28,5 +28,5 @@ blur:
   kernel_size: 31
   sigma_x: 19
 debug:
-  show_on_image: True
-  print_on_terminal: True
+  show_on_image: False
+  print_on_terminal: False

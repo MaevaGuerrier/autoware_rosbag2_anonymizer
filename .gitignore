@@ -22,3 +22,9 @@ autoware_rosbag2_anonymizer.egg-info
 
 .idea/
 .venv/
+
+
+UNKNOWN.egg-info/
+*.egg-info/
+
+
